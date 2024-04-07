@@ -22,7 +22,6 @@ export class UsersController {
   }
 
   @Post('login')
-  @HttpCode(HttpStatus.OK)
   async login(@Body(new ValidationPipe()) loginUserDto: LoginUserDto) {
     const token = await this.usersService.login(loginUserDto);
     return { token };
