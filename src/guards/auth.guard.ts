@@ -37,6 +37,9 @@ export class AuthGuard implements CanActivate {
     const userId = payload.id;
     req.userId = userId;
     const user = await this.usersRepository.findOneBy({ id: userId });
-    return !!user;
+    if (!user) {
+      throw new UnauthorizedException('Invalid JWT');
+    }
+    return true;
   }
 }

@@ -13,7 +13,6 @@ export class BooksService {
   ) {}
 
   async create(createBookDto: CreateBookDto, userId: string) {
-    console.log(userId);
     return await this.bookRepository.save({
       ...createBookDto,
       user: { id: userId },

@@ -53,7 +53,7 @@ export class BooksController {
 
   @Get(':id')
   async findOne(@Param('id') id: number) {
-    return await this.booksService.findOne(id);
+    return await this.booksService.findOne(+id);
   }
 
   @Put(':id')
