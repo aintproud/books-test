@@ -62,7 +62,8 @@ export class BooksController {
     @Param('id') id: number,
     @Body(new ValidationPipe()) updateBookDto: UpdateBookDto,
   ) {
-    return await this.booksService.update(id, updateBookDto);
+    await this.booksService.update(id, updateBookDto);
+    return 'Book updated successfully';
   }
 
   @Delete(':id')

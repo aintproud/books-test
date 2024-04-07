@@ -13,6 +13,7 @@ export class BooksService {
   ) {}
 
   async create(createBookDto: CreateBookDto, userId: string) {
+    console.log(userId);
     return await this.bookRepository.save({
       ...createBookDto,
       user: { id: userId },
@@ -29,8 +30,8 @@ export class BooksService {
       skip: (page - 1) * limit,
       take: limit,
       where: {
-        ...(author && { author }),
-        ...(release_year && { release_year }),
+        author,
+        release_year,
       },
     });
   }
@@ -40,10 +41,7 @@ export class BooksService {
   }
 
   async update(id: number, updateBookDto: UpdateBookDto) {
-    return await this.bookRepository.save({
-      id,
-      ...updateBookDto,
-    });
+    return await this.bookRepository.update(id, updateBookDto);
   }
 
   async remove(id: number) {

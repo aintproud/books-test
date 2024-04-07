@@ -11,7 +11,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import config from '../config';
 import { Book } from 'src/entities/book.entity';
-import { IsUUID } from 'class-validator';
 const jwtConfig = config.jwt;
 
 @Injectable()
