@@ -47,7 +47,6 @@ export class BookMasterUserGuard implements CanActivate {
       where: { id: askedId },
       relations: ['user'],
     });
-    console.log(book);
     if (!book) {
       throw new NotFoundException('Book not found');
     }
